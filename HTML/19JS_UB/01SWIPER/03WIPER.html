@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+      /* 화면설정 */
+      .swiper {
+        width: 500px;
+        height: 35px;
+        border: 1px solid;
+      }
+      /* 글씨 설정 */
+      .swiper-slide {
+        text-align: left;
+        line-height: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main>
+        <section>
+          <!-- Slider main container -->
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">Slide 1</div>
+              <div class="swiper-slide">Slide 2</div>
+              <div class="swiper-slide">Slide 3</div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // y축으로 슬레이드 설정
+      const verticalSwiper = new Swiper(".swiper", {
+        direction: "vertical",
+        autoplay: {
+          // 딜레이 설정
+          delay: 1000,
+        },
+      });
+    </script>
+  </body>
+</html>

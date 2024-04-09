@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- SWIPER CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+      .wrapper > header {
+        height: 150px;
+      }
+      .wrapper > header > img {
+        position: relative;
+        top: 30px;
+        left: 200px;
+      }
+      .wrapper > main > section.banner-section {
+        height: 540px;
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="images/mag/logo.png" alt="" />
+        <div class="top-header"></div>
+        <nav></nav>
+      </header>
+      <main>
+        <section class="banner-section">
+          <!-- Slider main container -->
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <a href="javascript:void(0)"
+                  ><img src="images/mag/mag 1.jpg" alt=""
+                /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)"
+                  ><img src="images/mag/mag 2.jpg" alt="" />
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)"
+                  ><img src="images/mag/mag 3.jpg" alt="" />
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">
+                  <img src="images/mag/mag 4.jpg" alt=""
+                /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">
+                  <img src="images/mag/mag 5.jpg" alt=""
+                /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">
+                  <img src="images/mag/mag 6.jpg" alt=""
+                /></a>
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev">
+              <span class="material-symbols-outlined"></span>
+            </div>
+            <div class="swiper-button-next">
+              <span class="material-symbols-outlined"></span>
+            </div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </section>
+
+        <section></section>
+        <section></section>
+      </main>
+      <footer></footer>
+    </div>
+
+    <script>
+      const swiper_banner = new Swiper(
+        ".wrapper>main>section.banner-section>.swiper",
+        {
+          direction: "horizontal",
+          autoplay: {
+            delay: 1000,
+            pauseOnMouseEnter: true,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: "true",
+            type: "bullets", // bullets , progressbar , fraction..
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          mousewheel: true,
+          effect: "fade",
+        }
+      );
+    </script>
+  </body>
+</html>
