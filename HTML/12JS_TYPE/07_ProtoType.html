@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //----------------------------
+        // Object객체 : 객체를 다루는 기본함수(메서드)를 제공
+        // 모든 객체중 최상위 객체
+        //----------------------------
+        let obj={name:'홍길동',age:15};
+        console.log(obj);
+        console.log(Object.keys(obj));      //Key추출
+        console.log(Object.values(obj));    //Value추출
+        console.log(Object.entries(obj));   // entries[key,value]추출
+        let ob1 = {addr:'대구'};
+        let ob2 = {gender : 'M'};
+        console.log(Object.assign(obj,ob1,ob2));//obj에 ob1,ob2 속성 복사
+        
+        Object.freeze(obj); //객체 수정 불가
+        Object.seal(obj);   //객체 속성 추가 불가
+
+
+
+        //----------------------------
+        // Object.prototype : 상속 구현에 사용되는 메커니즘, Object객체 내에 구성
+        //---------------------------- 
+        // Object.prototype
+        // 자바스크립트의 모든 객체가 상속하는 프로토타입 체인의 최상위의 객체
+        // Object.prototype에는 다양한 함수가 정의가 되어있음
+        //
+        // toString() : 객체의 정보를 문자열로 변환하여 반환
+        // hasOwnProperty() : 객체가 특정 속성을 직접 소유하고 있는지 여부를 체크(true/false)
+        // isPrototypeOf() : 객체가 다른 객체의 프로토타입 체인에 존재하는지 여부를 확인
+        // ValueOf() : 객체의 원시값 표현을 반환
+        // toLocaleString() : 객체를 지역화된 문자열로 변환하여 반환
+        // propertyIsEnumerable() : 특정 속성이 열거 가능한 속성인지 여부를 확인
+        // Constructor : 객체를 생성한 생성자 함수를 참조
+        // ...
+
+        console.log(Object.prototype);
+
+        //함수(생성자로 사용할)
+        function Person(name){
+            this.name=name; 
+        }
+        const minsu  = new Person("김민수");
+        console.log('생성자를 이용한 객체 ',minsu);
+        // const obj_tmp ={name:'김민수'};
+        // console.log('{}로 만든 객체 ',obj_tmp);
+
+        Person.prototype.hello=function(){
+            console.log('안녕하세요! 저는 ' + this.name + " 입니다.!");
+        };
+
+        const hong = new Person("홍길동")
+        console.log(hong);
+
+        hong.hello();
+        minsu.hello
+
+
+
+
+        //----------------------------
+        //----------------------------
+        //----------------------------
+        //----------------------------
+
+    </script>
+</body>
+</html>

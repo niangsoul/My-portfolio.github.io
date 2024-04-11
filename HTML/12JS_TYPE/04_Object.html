@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="tory.sound()">짖어!</button> | 
+    <button onclick="tory.toString()">정보확인</button>
+    <hr>
+    <button onclick="myCar.accel()">가속</button> | 
+    <button onclick="myCar.break()">감속</button> |
+    <button onclick="myCar.toString()">확인</button> 
+    <script>
+        //01 
+
+        // const tory = {
+        //     //속성
+        //     name: "토리",
+        //     kind :"포메라니안",
+        //     age : 1, 
+        //     //기능
+        //     sound:function(){
+        //         console.log(this.name+" 이(가) 왕왕 짖습니다");
+        //         alert(this.name+" 이(가) 왕왕 짖습니다");
+        //     },
+        //     toString:function(){
+        //         console.log(tory.name+","+tory.kind+","+tory.age);
+        //         alert(tory.name+","+tory.kind+","+tory.age);
+        //     }
+        // }
+        //tory.name="뽀삐";
+        //console.log(typeof tory);
+        //console.log(tory.name+","+tory.kind+","+tory.age);
+        //tory.sound();
+        //tory.toString();
+
+
+        //02 
+        const myCar = {
+            //속성
+            owner :"홍길동",
+            model :"아반떼xd",
+            fuelkind:"가솔린",
+            speed:0,
+            //기능
+            accel:function(){
+                this.speed+=10;
+                if(this.speed>200){
+                    this.speed=200; 
+                    alert("최대속도를 초과!");
+                }
+                console.log(`현재속도 : ${this.speed}`);
+            },
+            break:function(){
+                this.speed-=10;
+                if(this.speed<0)
+                    this.speed=0;
+                console.log(`현재속도 : ${this.speed}`);
+            },
+            toString:function(){
+                console.log(this.owner+","+this.model+","+this.fuelkind+","+this.speed);
+            }
+        };    
+        
+        console.log("myCarInfo : ",myCar.toString());
+    </script>
+</body>
+</html>

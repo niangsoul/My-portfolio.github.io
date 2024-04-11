@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="alert('helloworld')">버튼01</button>
+    <button onclick="alert(10+20)">버튼02</button>
+    <button onclick="alert('helloworld\nhellworld\nhelloworld')">버튼02</button>
+    <hr>
+    <a href="javascript:alert('hellworld')">버튼01</a>
+    <a href="javascript:void(0)">버튼02</a>
+    <a href="javascript:console.log(obj)">버튼03</a>
+    <hr>
+    <!-- 
+        
+     -->
+    <button onclick="console.log(this)">버튼01</button>
+    <a href="javascript:console.log(this)" >버튼02</a>
+    <a href="" onclick="console.log(this)" >버튼03</a>
+    <a href="javascript:void(0)" onclick="console.log(this)" >버튼04</a>
+
+    <script>
+        const obj = {'name' : '홍길동','age' : '55'};
+    </script>
+
+
+</body>
+</html>
