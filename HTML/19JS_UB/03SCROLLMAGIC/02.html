@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Scroll.cdn -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+      integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <style>
+      /* 바디 css */
+      body {
+        height: 2000px;
+      }
+      /* 세션 css */
+      section {
+        width: 80%;
+        height: 500px;
+        margin: 20px auto;
+        border: 1px solid;
+
+        display: flex;
+        align-items: start;
+
+        position: relative;
+      }
+      /* 세션3 css */
+      .section03 {
+        display: flex;
+        justify-content: right;
+      }
+      /*  공 css */
+      .ball {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        border-radius: 50%;
+        position: relative;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 1.5s;
+        background-color: green;
+        color: white;
+        opacity: 1;
+      }
+      /*  공2 css */
+      .ball2 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        border-radius: 50%;
+        position: relative;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 1.5s;
+        color: white;
+        background-color: green;
+        opacity: 1;
+      }
+      /* 공 move css */
+      .move {
+        transform: translate(800px, 300px) scale(2) rotate(360deg);
+        background-color: pink;
+        color: aqua;
+      }
+      /* 공2 move css */
+      .move2 {
+        transform: translate(-800px, 300px) scale(2) rotate(360deg);
+        background-color: hotpink;
+        color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section01"></section>
+    <section class="section02 scroll-spy">
+      <!-- 공1 -->
+      <div class="ball">GO HOME</div>
+    </section>
+    <section class="section03 scroll-spy">
+      <!-- 공2 -->
+      <div class="ball2">GO HOME</div>
+    </section>
+
+    <script>
+      const spyedEls = document.querySelectorAll(".scroll-spy");
+      const ballEl = document.querySelector(".ball");
+      const ball2El = document.querySelector(".ball2");
+      let cnt = 0;
+      spyedEls.forEach((spyedEl) => {
+        console.log(spyedEl);
+        if (cnt == 0) {
+          // 공 move 스크립트 설정
+          new ScrollMagic.Scene({
+            triggerElement: spyedEl,
+            triggerHook: 0.5,
+          })
+            .setClassToggle(ballEl, "move")
+            .addTo(new ScrollMagic.Controller());
+          // 1 spyedEl
+          cnt++;
+        } else {
+          // 공2 move 스크립트 설정
+          new ScrollMagic.Scene({
+            triggerElement: spyedEl,
+            triggerHook: 0.5,
+          })
+            .setClassToggle(ball2El, "move2")
+            .addTo(new ScrollMagic.Controller());
+          // 2 spyedEl
+        }
+      });
+      // const ScrollMagicObject = new ScrollMagic.Scene({
+      //   triggerElement: spyedEl, //감시할 요소 선택
+      //   triggerHook: 0.5, //스크롤의 위치(0-1 사이값) 50
+      // })
+      //   .setClassToggle(ballEl, "move")
+      //   .addTo(new ScrollMagic.Controller());
+    </script>
+  </body>
+</html>

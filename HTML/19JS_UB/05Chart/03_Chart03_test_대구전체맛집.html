@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./js/dataset/달서구맛집.js"></script>
+    <script src="./js/dataset/달성군맛집.js"></script>
+    <script src="./js/dataset/북구맛집.js"></script>
+    <script src="./js/dataset/서구맛집.js"></script>
+    <script src="./js/dataset/중구맛집.js"></script>
+
+    <script src="./js/drawDiagram.js"></script>
+    <script src="./js/extractApi.js"></script>
+
+    <style>
+      .meme_item {
+        position: relative;
+      }
+      #wrapper {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #wrapper > * {
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>대구 지역별 맛집 분포도</h1>
+
+    <div id="wrapper">
+      <div>
+        <div style="text-align: center; width: 500px">
+          <h4>중구</h4>
+        </div>
+        <div
+          class="meme_item"
+          style="
+            text-align: center;
+            border: 1px solid gray;
+            width: 500px;
+            height: 500px;
+          "
+        >
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: center; width: 500px">
+          <h4>서구</h4>
+        </div>
+        <div
+          class="meme_item"
+          style="
+            text-align: center;
+            border: 1px solid gray;
+            width: 500px;
+            height: 500px;
+          "
+        >
+          <canvas id="myChart2"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: center; width: 500px">
+          <h4>달서구</h4>
+        </div>
+        <div
+          class="meme_item"
+          style="
+            text-align: center;
+            border: 1px solid gray;
+            width: 500px;
+            height: 500px;
+          "
+        >
+          <canvas id="myChart3"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: center; width: 500px">
+          <h4>북구</h4>
+        </div>
+        <div
+          class="meme_item"
+          style="
+            text-align: center;
+            border: 1px solid gray;
+            width: 500px;
+            height: 500px;
+          "
+        >
+          <canvas id="myChart4"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="text-align: center; width: 500px">
+          <h4>달성군</h4>
+        </div>
+        <div
+          class="meme_item"
+          style="
+            text-align: center;
+            border: 1px solid gray;
+            width: 500px;
+            height: 500px;
+          "
+        >
+          <canvas id="myChart5"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      result1 = extractDataSet(중구맛집.data);
+      console.log("result1", result1);
+      result2 = extractDataSet(서구맛집.data);
+      console.log("result2", result2);
+      result3 = extractDataSet(달서구맛집.data);
+      console.log("result3", result3);
+      result4 = extractDataSet(북구맛집.data);
+      console.log("result4", result4);
+      result5 = extractDataSet(달성군맛집.data);
+      console.log("result5", result5);
+
+      drawbyPie("중구맛집", result1.keys, result1.values, "myChart");
+      drawbyPie("서구맛집", result2.keys, result2.values, "myChart2");
+      drawbyPie("달서구맛집", result3.keys, result3.values, "myChart3");
+      drawbyPie("북구맛집", result4.keys, result4.values, "myChart4");
+      drawbyPie("달성군맛집", result5.keys, result5.values, "myChart5");
+    </script>
+  </body>
+</html>

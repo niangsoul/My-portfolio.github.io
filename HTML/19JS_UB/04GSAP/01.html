@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- gsap cdn -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      /* 상자 전체 css */
+      div {
+        width: 50px;
+        height: 50px;
+        border: 0cap1px solid;
+        margin: 15px;
+      }
+      /* 첫번째 상자 css */
+      .box1 {
+        background-color: orange;
+      }
+      /* 두번째 상자 css */
+      .box2 {
+        background-color: red;
+      }
+      /* 세번째 상자 css */
+      .box3 {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 첫번째 상자 -->
+    <div class="box1"></div>
+    <!-- 두번째 상자 -->
+    <div class="box2"></div>
+    <!-- 세번째 상자 -->
+    <div class="box3"></div>
+    <!-- 네번째 상자 -->
+    <div class="box4"></div>
+
+    <script>
+      // 첫번째 상자 스크립트
+      gsap.to(".box1", {
+        duration: 3,
+        x: 500,
+        opacity: 0.5,
+        ease: "step(10)",
+        delay: 2,
+      });
+      // 두번째 상자 스크립트
+      gsap.to(".box2", {
+        duration: 3,
+        x: 500,
+        opacity: 0.5,
+        ease: "step(10)",
+        delay: 2,
+        rotate: 360,
+      });
+      // 세번째 상자 스크립트
+      gsap.from(".box3", {
+        duration: 2,
+        x: 900,
+        ease: "linear",
+        delay: 2,
+      });
+      // 네번째 상자 스크립트
+      gsap.fromTo(
+        ".box4",
+        { x: 500, backgroundColor: "orange" },
+        { duration: 3, x: 0 }
+      );
+    </script>
+  </body>
+</html>

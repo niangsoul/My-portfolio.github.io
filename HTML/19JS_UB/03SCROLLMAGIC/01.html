@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Scroll.cdn -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+      integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <style>
+      /* 바디 css */
+      body {
+        height: 2000px;
+      }
+      /* 세션 css */
+      section {
+        width: 80%;
+        height: 500px;
+        margin: 20px auto;
+        border: 1px solid;
+
+        display: flex;
+        align-items: center;
+
+        position: relative;
+      }
+      /*  공 css */
+      .ball {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        border-radius: 50%;
+        position: relative;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 1.5s;
+      }
+      /* 공 move css */
+      .move {
+        transform: translateX(800px) scale(1.5) rotate(360deg);
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section01"></section>
+    <!-- 세션2 -->
+    <section class="section02 scroll-spy">
+      <div class="ball">GO HOME</div>
+    </section>
+    <section class="section03"></section>
+
+    <script>
+      const spyedEl = document.querySelector(".scroll-spy");
+      const ballEl = document.querySelector(".ball");
+      const ScrollMagicObject = new ScrollMagic.Scene({
+        triggerElement: spyedEl, //감시할 요소 선택
+        triggerHook: 0.5, //스크롤의 위치(0-1 사이값) 50
+      })
+        // 공 move 스크립트 설정
+        .setClassToggle(ballEl, "move")
+        .addTo(new ScrollMagic.Controller());
+    </script>
+  </body>
+</html>

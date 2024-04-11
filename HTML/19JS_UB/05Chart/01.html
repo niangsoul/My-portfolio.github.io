@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- chart.cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- div css -->
+    <div style="width: 500px; height: 500px; border: 1px solid; padding: 15px">
+      <!-- 차트 -->
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+      // 차트 데이터
+      var data = {
+        labels: ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "VIOLET"],
+        datasets: [
+          {
+            // 라벨 이름
+            labels: "TEST_LABEL",
+            // 숫자 데이터
+            data: [10, 55, 40, 30, 22, 60],
+            // 배경색 지정
+            backgroundColor: [
+              "rgba(255,0,255,0.5)",
+              "rgba(255,204,255,0.5)",
+              "rgba(0,204,255,0.5)",
+              "rgba(153,255,051,0.5)",
+              "rgba(051,153,255,0.5)",
+              "rgba(255,153,051,0.5)",
+            ],
+            // 보더 색 지정
+            borderColor: [
+              "rgba(255,0,255,0.5)",
+              "rgba(255,204,255,0.5)",
+              "rgba(0,204,255,0.5)",
+              "rgba(153,255,051,0.5)",
+              "rgba(051,153,255,0.5)",
+              "rgba(255,153,051,0.5)",
+            ],
+            // 보더 높이 지정
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // 차트 옵션(범례, x/y축 , animation , layout , plugin ...)
+      var options = {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      };
+
+      // 켄버스 요소 선택
+      var ctx = document.querySelector("#myChart").getContext("2d");
+
+      // 차트 객체
+
+      var myChart = new Chart(ctx, {
+        type: "pie", // line , pie , doughnut , radar ,
+        data: data,
+        option: options,
+      });
+    </script>
+  </body>
+</html>
