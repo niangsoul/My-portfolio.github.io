@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            width:120px;
+            height : 35px;
+            text-align: center;
+            line-height:35px;
+            border : 1px solid;
+            border-radius: 10px;
+            margin : 5px;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        .btn--bg0{background-color: red;color:white}
+        .btn--bg1{background-color: orange;color:white}
+        .btn--bg2{background-color: yellowgreen;color:white}
+        .btn--bg3{background-color: green;color:white}
+        .btn--bg4{background-color: blue;color:white}
+        .btn--bg5{background-color: navy;color:white}
+         
+
+    </style>
+</head>
+<body>
+
+    <div class="btn">BUTTON1</div>
+    <div class="btn">BUTTON2</div>
+    <div class="btn">BUTTON3</div>
+    <div class="btn">BUTTON4</div>
+    <div class="btn">BUTTON5</div>
+    <div class="btn">BUTTON6</div>
+    
+    <script>
+        const btnEls =  document.querySelectorAll('.btn');
+        //console .log(btnEls);
+        btnEls.forEach((item,idx)=>{
+            //console.log(idx,item);
+            //마우스 over이벤트
+            item.addEventListener('mouseover',function(){
+                console.log(item.innerHTML +  " mouseover..");
+                item.classList.add(`btn--bg${idx}`)
+                console.log(item.classList);
+
+            })
+            //마우스 leave이벤트
+            item.addEventListener('mouseleave',function(){
+                console.log(item.innerHTML + " mouseleave..");
+                item.classList.remove(`btn--bg${idx}`)
+                console.log(item.classList);
+            })
+        })
+
+    </script>
+</body>
+</html>

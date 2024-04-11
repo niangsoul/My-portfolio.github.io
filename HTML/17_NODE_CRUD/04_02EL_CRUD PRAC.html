@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- GOOGLE ICON -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            font-size: 1rem;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24;
+          font-size:1.5rem;
+        }
+        input{
+            height : 35px;
+        }
+        .btn{
+            width : 75px;
+            height : 35px;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        th,td{
+            width:50px;
+            height : 35px;
+            border : 1px solid;
+            margin : 2px;
+        }
+        th:nth-child(1),
+        td:nth-child(1)
+        {
+            width : 150px;
+        }
+        th:nth-child(3),
+        td:nth-child(3)
+        {
+            width : 700px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <form action="" name="joinForm" onsubmit="return false">
+        <input name="username" placeholder="이름을 입력하세요" >
+        <input name="age"  placeholder="나이를 입력하세요">
+        <input name="address" placeholder="주소를 입력하세요">
+        <button class="btn">입력</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+                <th>삭제</th>
+            </tr>   
+        </thead>
+        <tbody>
+
+        </tbody>
+        
+    </table>
+
+    </div>
+    <script>
+        // form의 기본기능은 비활성화합니다
+        //입력버튼을 눌렀을때 table의 tbody에 입력된 (이름/나이/주소/삭제버튼)이 생성될수 있도록합니다
+        //입력된 노드의 이름/나이/주소를 수정할수 있도록합니다.
+        //특정행의 삭제버튼을 클릭했을때 해당 행이 삭제 될수 있도록 합니다.
+        
+        //특정행의 위치를 위로이동/아래로 이동이 가능하도록 합니다(나중에)
+
+        const btnEl = document.querySelector('.btn');
+        const formEl = document.joinForm;
+        const usernameEl = formEl.username;
+        const ageEl = formEl.age;
+        const addressEl = formEl.address;
+        const tableBodyEl = document.querySelector('table tbody');
+
+        //버튼 이벤트 처리
+        btnEl.addEventListener('click',function(){
+            if(isValid()){
+                createNode();
+            }
+            usernameEl.value='';
+            ageEl.value='';
+            addressEl.value='';
+        })
+        //유효성검사 함수(Validation Check )
+        function isValid(){
+            if(ageEl.value==""){
+                alert("나이를 입력하세요");
+                return false;
+            }
+            else if(isNaN(ageEl.value)){
+                alert("나이는 숫자만 입력 가능합니다.")
+                return false;
+            }else if(ageEl.value<15 || ageEl.value>90){
+                alert("나이는 15 ~ 90 의 값만 입력합니다.")
+                return false;
+            }
+            return true;     
+        }
+        //노드생성 함수
+        let td01_id_val=0;
+        function createNode(){
+                td01_id_val++;
+                const tr =document.createElement('tr') //tr생성       
+                tr.setAttribute('draggable',true);
+                const td1 = document.createElement('td');//td생성 
+                
+                const chk1 = document.createElement("input");
+                chk1.setAttribute('type','checkbox');
+                chk1.setAttribute('id',`name_id_01_${td01_id_val}`)
+                chk1.style.display="none";
+                const chk1_label = document.createElement('label');
+                chk1_label.setAttribute('for',`name_id_01_${td01_id_val}`);
+                chk1_label.setAttribute('style','display:block;position:relative;')
+
+
+                const input1 = document.createElement("input");
+                input1.value = usernameEl.value;
+                input1.setAttribute('disabled',true);
+                input1.setAttribute('style','position:relative;z-index:-1')
+
+                chk1.addEventListener('change',function(event){
+                    const inputEl = chk1.nextSibling.firstChild;
+                    if(event.target.checked){  
+                        inputEl.style.zIndex=1;
+                        inputEl.disabled=false;                
+                    }else{        
+                        inputEl.disabled=true;                   
+                    }
+                });
+                input1.addEventListener('keydown',function(event){
+                   
+                    if(event.keyCode==13){
+                        console.log("key..");
+                        input1.setAttribute('style','position:relative;z-index:-1');
+                        input1.setAttribute('disabled',true);
+
+                        const chkEl = input1.parentNode.previousSibling;
+                        chkEl.checked=false;
+                    }
+                })
+
+               
+                chk1_label.appendChild(input1);
+                td1.append(chk1);
+                td1.append(chk1_label)
+               
+                
+
+
+                const td2 = document.createElement('td');//td생성 
+                td2.innerHTML = ageEl.value;
+                
+                const td3 = document.createElement('td');//td생성 
+                td3.innerHTML = addressEl.value;
+                const td4 = document.createElement('td');//td생성 
+                const delEl = document.createElement('span');
+                delEl.classList.add('material-symbols-outlined');
+                delEl.innerHTML='delete';
+                delEl.setAttribute('style','cursor:pointer');
+                delEl.addEventListener('click',function(){
+                    const parentEl = delEl.parentNode.parentNode;
+                    console.log(parentEl);
+                    parentEl.remove();  
+                });
+
+                td4.appendChild(delEl);
+
+                //tr-td연결
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3); 
+                tr.appendChild(td4);        
+                //tbody-tr연결
+                tableBodyEl.appendChild(tr);
+
+
+        }
+
+    </script>
+</body>
+</html>

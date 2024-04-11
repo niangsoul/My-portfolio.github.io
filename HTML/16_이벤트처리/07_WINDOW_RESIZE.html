@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball{
+            width : 300px;
+            height : 300px;
+            border : 4px solid gray;
+            background-color: beige;
+            border-radius: 50%;
+            position:absolute;
+            left:0;top:0;bottom:0;right:0;
+            margin:auto; 
+            transition: .3s; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ball"></div>
+
+    <script>
+        //
+        const ballEl =  document.querySelector('.ball');
+
+        window.addEventListener('resize',function(){
+            // console.log("resized...");
+            //window.innerWidth : 브라우저 윈도우 두께를 제외한 실질적 가로 너비
+            //window.outerWidth : 브라우저 윈도우 두께를 포함한 전체 가로 너비
+            //console.log("resized...innerWidth",window.innerWidth);
+            //console.log("resized...outerWidth",window.outerWidth);
+            changeBallStyle();
+
+        })
+
+        window.addEventListener('DOMContentLoaded',function(){
+            console.log("DOMContentLoaded...");
+            changeBallStyle();
+
+        })
+
+        function changeBallStyle(){
+            if(window.innerWidth<=360){
+                console.log('mobile..')
+                ballEl.style.width="50px";
+                ballEl.style.height="50px";
+                ballEl.style.border="1px solid ";
+                ballEl.style.backgroundColor="orange";
+            }else if(window.innerWidth<=780){
+                //테블릿너비
+                console.log('tablet..')
+                ballEl.style.width="150px";
+                ballEl.style.height="150px";
+                ballEl.style.border="2px solid ";
+                ballEl.style.backgroundColor="royalblue";
+            }else {
+                //데스크탑너비
+                console.log('desktop..')
+                ballEl.style.width="300px";
+                ballEl.style.height="300px";
+                ballEl.style.border="4px solid gray";
+                ballEl.style.backgroundColor="beige";
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>

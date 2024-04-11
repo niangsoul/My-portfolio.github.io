@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <form action="">
+        <input type="text">
+        <input type="text">
+    </form>
+    <form action="" name="joinForm">
+        <input type="text" name="username">
+        <input type="text" name="phone">
+    </form>
+    <form action="" name="emailAuthForm">
+        <input type="text">
+        <input type="text">
+    </form>
+
+    <script>
+        // //모든 form찾기
+        // const formEls =  document.forms;
+        // console.log(formEls);
+
+        // //개별 form접근
+        // console.log(formEls[0]);
+        // console.log(formEls[1]);
+        // console.log(formEls[2]);
+
+        // //개별 form내의 요소 접근 
+        // console.log(formEls[0][0]);
+        // console.log(formEls[0][1]);
+        // formEls[0][0].value="홍길동";
+        // formEls[1][1].value="남길동";
+
+        //name부여후 form내의 요소 접근
+        const joinFormEl =  document.joinForm;
+        //joinFormEl[0].value='아아아';
+        joinFormEl.username.value='js재미있다...ㅜㅜ';
+        joinFormEl.phone.value='010-2222-3333';
+
+
+    </script>
+
+
+
+
+</body>
+</html>

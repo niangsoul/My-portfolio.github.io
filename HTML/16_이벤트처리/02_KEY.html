@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    KEYUP : <input id="input1"><br>
+    <p id="p1"></p>
+    <hr>
+    KEYDOWN : <input id="input2"><br>
+    <p id="p2"></p>
+    <hr>
+    KEYPRESS : <input id="input3"><br>
+    <p id="p3"></p>
+    <hr>
+
+    <script>
+        //KEYUP
+        const input01El =  document.getElementById('input1');
+        input01El.addEventListener('keyup',function(event){
+            console.log('keyup..',event.key);
+            console.log('keyup..',event.keyCode);
+            const p1Tg = document.getElementById('p1');
+            p1Tg.innerHTML = event.key+' - '+event.keyCode;
+        });
+
+        //KEYDOWN
+        const input02El =  document.getElementById('input2');
+        input02El.addEventListener('keydown',function(event){
+            console.log('keydown..',event.key);
+            console.log('keydown..',event.keyCode);
+            const p2Tg = document.getElementById('p2');
+            p2Tg.innerHTML = event.key+' - '+event.keyCode;
+        });
+
+        //KEYPRESS
+        const input03El =  document.getElementById('input3');
+        input03El.addEventListener('keypress',function(event){
+            console.log('keypress..',event.key);
+            console.log('keypress..',event.keyCode);
+            const p3Tg = document.getElementById('p3');
+            p3Tg.innerHTML = event.key+' - '+event.keyCode;
+        });
+    </script>
+</body>
+</html>

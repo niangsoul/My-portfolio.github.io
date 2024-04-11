@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 클로저
+        // 내부 함수가 외부 함수의 변수에 접근할 수 있는 것을 의미
+        // 정보 은닉 : 클로저를 사용하여 외부에서 접근할수 없도록 변수를 보호하고, 내부함수를 통해서만 접근하도록 할 수 있다
+        // 데이터 보존 : 함수가 생성될 당시의 환경을 유지하면서, 데이터를 영구적으로 보존할 수 있다
+        // 비동기 처리 : 비동기적인 작업에서 결과를 유지하고, 필요할 때 접근할 수 있다.
+
+        //01 기본
+        // function outerFunc(){
+        //     let state=0;    //상태변수 
+            
+        //     //내부함수
+        //     function addStateOne(){
+        //         state++;
+        //         console.log("cur State Val : ",state);
+        //     }
+
+        //     return addStateOne; // addStateOne함수의 위치값을 리턴(함수명이 리턴되면 만들어진 함수의 위치정보(주소)가 반환)
+        // }
+        // const closureFunc = outerFunc();
+        // closureFunc();
+        // closureFunc();
+        // closureFunc();
+
+        //02 
+        const outer=()=>{
+            let num=0;
+            //Getter and Setter
+            const getNum = ()=>{return num;}
+            const setNum = (n)=>{num=n;}
+
+            return {
+                get : getNum,
+                set : setNum,
+            }
+
+        }
+
+        const closure = outer();
+        console.log(closure);
+        closure.set(100);
+        console.log(closure.get());
+
+
+
+        // 문제
+        // 다음 빈칸을 완성하세요
+        const  person = ()=>{
+            this.name;
+            this.age;
+            this.addr;
+            this.id;
+            setName = (name)=>{ this.name = name;}
+            setAge = (age)=>{this.age = age;}
+            setAddr = (addr)=>{this.addr = addr;}
+            setId= (id)=>{this.id = id;}
+            getName = ()=>{return name;}
+            getAge = ()=>{return age;}
+            getAddr = ()=>{return addr;}
+            return{
+                setName : setName,
+                setAge : setAge,
+                setAddr : setAddr,
+                setId : setId,
+                getName : getName,
+                getAge : getAge,
+                getAddr : getAddr,
+            }
+        }
+        const 홍길동 = person();
+        홍길동.setName("홍길동");
+        홍길동.setAge("55");
+        홍길동.setAddr("대구")
+        홍길동.setId("111111-2222222");
+        console.log(홍길동);
+        console.log(홍길동.getName());
+        console.log(홍길동.getAge());
+        console.log(홍길동.getAddr());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //https://developer.mozilla.org/ko/docs/Glossary/Hoisting
+        //호이스팅(끌어 올리기)
+        //코드가 실행되기 전 변수선언/함수선언이 해당 스코프의 최상단으로 끌어 올려진 것 같은 현상
+
+        //호이스팅 처리(function-)
+        f1();
+        function f1(){
+            console.log("HELLO WORLD");
+        }
+        //호이스팅 처리 x
+        //f2(); (x)
+        const f2 = ()=>{
+            console.log("HELLO WORLD");
+        };
+        f2();
+        //함수표현식(()=>{}) 권장
+        //이유. 코드 구조를 무너뜨린다
+        //이유. 절차대로 처리가 되지 않는다
+
+
+    </script>
+</body>
+</html>

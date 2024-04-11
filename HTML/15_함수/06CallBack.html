@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script>
+        // 콜백함수(Call Back)
+        // 함수를 호출하는 시점이 바뀌어진 형태의 함수
+        // 기존방식 : 사용자(개발자)가 함수를 직접정의 -> 정의된 함수를 호출(Call)하여 결과를 반환받는 방식
+        // CallBack : 콜백함수의 인자로 수행로직(()=>{},function(){})을 전달하여 콜백함수로부터 처리된 결과를
+        // 반환받는 형태
+
+        // function func(n1,n2){
+        //     const result = n1+n2;
+        //     return result;
+        // }
+        // const r = func(10,20) ; //Call
+        // console.log(r);
+
+        // function callbackFunc(n1,n2,func){
+        //     const result = func(n1,n2);
+        //     return result;
+        // }
+        // function sum(n1,n2){return n1+n2};
+        // function sub(n1,n2){return n1-n2};
+        // function mul(n1,n2){return n1*n2};
+        // function div(n1,n2){return n1/n2};
+
+        // const r1 =  callbackFunc(20,4,sum);
+        // console.log("r1",r1);
+        // const r2 =  callbackFunc(20,4,sub);
+        // console.log("r2",r2);
+        // const r3 =  callbackFunc(20,4,mul);
+        // console.log("r3",r3);
+        // const r4 =  callbackFunc(20,4,div);
+        // console.log("r4",r4);
+
+
+        const data = [11,20,41,15,7,1,51];
+        
+        
+        // function simForEach(data,func){
+
+        //     const val= data.sort((a,b)=>{return b-a;})
+        //             .reduce((sum,item)=>{return sum+item},0)
+
+        //     console.log(data);
+        //     console.log(val);
+        //     data.push(val);
+        //     for(idx in data){
+        //         func(data[idx]);
+        //     }
+
+        // }
+        // simForEach(data,(item)=>{
+        //     console.log(item);
+        // });
+       
+
+        //문제 
+        function callbackfunc(func1,func2,func3,...args){
+            const arr1=func1(args); //가변인자를 받아서 그배열요소중 숫자만 필터링된 배열 반환
+            console.log("숫자필터링된 배열 : " + arr1);
+            const arr2=func2(arr1); //숫자만 필터링된 배열중 짝수만 걸러서 배열로 반환
+            console.log("짝수만 필터링된 배열 : " + arr2);
+            const arr3=func3(arr2); //짝수로 걸리진 배열의 합을 구함
+            return arr3;
+        }
+        
+        function proc1(arr){ return arr.filter( (item) =>typeof item == 'number' )}  // 가변인자배열중 숫자만 필터링된 배열 반환
+        function proc2(arr){ return arr.filter( (item)=>item%2==0 )   }  // 숫자중에 짝수만 필터링된 배열 반환
+        function proc3(arr){ return arr.reduce( (sum,item)=>sum+item ,0) }  // 짝수의 합을 반환
+
+        const rVal = callbackfunc(proc1,proc2,proc3, 10,20,'true',11,152,999,24,'문자열',null,155,24);
+        console.log('rVal : ',rVal);
+
+
+    </script>
+
+</body>
+</html>

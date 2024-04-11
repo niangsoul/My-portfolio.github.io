@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //var : 재선언, 재할당 가능(이름이 겹쳐도 문제가 없다..)
+        console.log(tmp1);  //undeinfed...but hosting에 의한 에러는 발생x
+        var tmp1 = {name : '홍길동', age : 20};  // 이름 중복시 절차흐름대로 마지막에 대입된 값으로 저장
+        console.log(tmp1);
+        var tmp1 = 10;                          // 이름 중복시 절차흐름대로 마지막에 대입된 값으로 저장
+        console.log(tmp1);
+
+        //let,const :재선언,재할당 불가(이름 겹치면 문제가 발생)
+        //scope : {} 내에서만 사용가능 {} 가아니면 전역사용가능
+        console.log(tmp2); //let으로 선언된 변수는 hosting 처리 x 에러발생
+        let tmp2 = {name : '홍길동', age : 20};
+        //let tmp2 = 10;    //let으로 선언된 변수의 재선언시 문제 발생
+        tmp2 = 10;          //이미 선언된 변수에 접근하여 값변경 가능
+        console.log(tmp2);
+
+        //let은 값 변경 가능(변수형)
+        //const는 값변경 불가(상수형-심볼릭 상수)
+
+
+    </script>
+
+</body>
+</html>

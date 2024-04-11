@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul>
+        <li>ITEM1</li>
+        <li id="li2">ITEM2</li>
+        <li class="item">ITEM3</li>
+        <li>ITEM4</li>
+        <li class="item">ITEM5</li>
+        <li>ITEM6</li>
+        <li class="item">ITEM7</li>
+    </ul>
+    
+    <script>
+        //getElementById('Id')
+        const  li2 = document.getElementById('li2')
+        li2.style.backgroundColor='orange';
+        //querySelector('selector')
+        const SEl =  document.querySelector('.item');
+        SEl.style.backgroundColor='green';
+        //querySelectorAll('selector')
+        const SEls =  document.querySelectorAll('.item');
+        console.log(SEls);
+        SEls.forEach(item=>{
+            item.style.color="blue";
+        })
+        //
+        const liEls = document.getElementsByTagName('li')
+        console.log(liEls);
+        // for(i in liEls){
+        //     console.log(i);
+        //     liEls[i].style.width="200px";
+        // }
+        // for(item of liEls){
+        //     console.log(item);
+        //     item.style.width="200px";
+        // } 
+
+        // 배열함수 forEach(x)
+        // liEls.forEach(item=>{
+        //     console.log(liEls);
+        // })
+        //Array.form() -배열함수 사용형태로 변환
+        // Array.from(liEls).forEach(item=>{
+        //     console.log(liEls);
+        //     item.style.fontWeight="800";
+        //     item.addEventListener('click',function(){
+        //         alert('clicked..contents : '+item.innerHTML)
+                
+        //     })
+        // })
+
+        
+
+
+    </script>
+
+</body>
+</html>

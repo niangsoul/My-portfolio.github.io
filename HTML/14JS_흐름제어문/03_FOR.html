@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <script>
+        //while 기본
+       
+        // let i = 0; //탈출용 변수
+        // while(i<10)//조건식
+        // {
+        //     document.write("HELLO WORLD<br>");
+        //     i++;    //연산작업(탈출용)
+        // }
+        // document.write("i : " + i);
+        
+        //for문 기본
+        // for(let i=0;i<10;i++){
+        //     document.write("HELLO WORLD<br>");
+        // }
+
+        //for in 문(Object포함)
+        //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...in
+        let arr=[10,20,30,40,50];
+        console.log(arr.length);
+        // console.log(arr[0]);console.log(arr[1]);
+        // console.log(arr[2]);console.log(arr[3]);
+        // console.log(arr[4]);
+        // for(let i=0;i<arr.length;i++)
+        //     console.log(arr[i]);
+        // for(let i in arr){
+        //     console.log(arr[i]);
+        // }
+        //배열 함수 forEach
+        //arr.forEach((item)=>{ console.log(item);});
+
+
+        //for of 문(배열용)
+        //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of
+        const obj =  {"name" : "홍길동", "age" : 55,"addr" : "대구"};
+
+        // for(let a in obj){
+        //     console.log(a , obj[a]);
+        // }
+
+        for (let a of arr){
+            console.log(a);
+        }
+        //for of문으로 [{},{},{}] 사용해보기
+        const ArrObj = [
+            {"name" : "홍길동", "age" : 55,"addr" : "대구"},
+            {"name" : "서길동", "age" : 44,"addr" : "울산"},
+            {"name" : "남길동", "age" : 33,"addr" : "인천"},
+        ];
+        for(let obj of ArrObj){
+            console.log(obj);
+        }
+
+        //for in : 순서가 있는 자료구조에 적용 o(배열,리스트,스택,큐,덱....)
+        //       : 순서가 없는 자료구조에 적용 o(Map(Oject형데이터Set),Set)
+        //for of : 순서가 있는 자료구조에만 적용(배열,리스트,스택,큐,덱....)
+
+
+    </script>
+    
+</body>
+</html>

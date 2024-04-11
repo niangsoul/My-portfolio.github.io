@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+
+        // 함수의 4가지 형태(ECMA6 이전) (기본 Hosting적용)
+        // function f1(n1,n2){console.log('f1(n1,n2)'); return n1+n2;}
+        // function f2(n1,n2){console.log('f2(n1,n2)');console.log(n1+n2); }
+        // function f3(){console.log('f3() ');return 11+21;}
+        // function f4(){console.log('f4() ',10+20);}
+
+        // 함수의 4가지 형태(ECMA6 이후) (화살표함수 - 기본 Hosting x)
+        //[function name(){}] ==    [const name=()=>{}]
+        // const f1=(n1,n2)=>{console.log('f1(n1,n2)'); return n1+n2;}
+        // const f2=(n1,n2)=>{console.log('f2(n1,n2)');console.log(n1+n2); }
+        // const f3=()=>{console.log('f3() ');return 11+21;}
+        // const f4=()=>{console.log('f4() ',10+20);}
+        
+        // //f1
+        // console.log('Before Call');
+        // const val1 = f1(10,20); //기본적으로 함수는 호출했던 위치로 돌아온다!
+        // console.log("val1",val1);
+        // console.log('After Call');
+        // //f2
+        // console.log("-------------------");
+        // console.log('Before Call');
+        // const val2 = f2(10,20); //기본적으로 함수는 호출했던 위치로 돌아온다!
+        // console.log("val2",val2);
+        // console.log('After Call');    
+        // //f3
+        // console.log("-------------------");
+        // console.log('Before Call');
+        // const val3 = f3(); //기본적으로 함수는 호출했던 위치로 돌아온다!
+        // console.log("val3",val3);
+        // console.log('After Call');  
+        // //f4
+        // console.log("-------------------");
+        // console.log('Before Call');
+        // const val4 = f4(); //기본적으로 함수는 호출했던 위치로 돌아온다!
+        // console.log("val4",val4);
+        // console.log('After Call'); 
+ 
+        // // 함수의 리턴형태(Ojbect)
+        // CF Object{} 의 멤버로 지정되는 함수는 function(){} 로 한다
+        // function f5(){
+        //     return {
+        //         name : "홍길동",
+        //         age : "22",
+        //         getName: function(){
+        //             //console.log(`${this.name}`); 
+        //             return `${this.name}`;
+        //         },
+        //         getAge:function(){
+        //             //console.log(`${this.age}`); 
+        //             return `${this.age}`;
+        //         }
+        //     }
+        // }
+        // console.log(f5());
+        // const obj = f5();
+        // console.log(obj);
+        // console.log(obj.getName());
+        // console.log(obj.getAge());
+
+        // 가변인자(...args) 사용
+        function f6(...args){
+            console.log(args);
+            args.forEach(item=>{
+                console.log(item);
+            })
+        }
+        f6(10,20,50,true,undefined,null,{name:'홍길동',age:'11'},()=>{console.log("a");},function(){console.log("b");});
+
+
+    </script>
+
+</body>
+</html>
