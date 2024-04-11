@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="startReservation()">예약실행</button> 
+    | 
+    <button onclick="cancelReservation1()">예약취소1</button>
+    |
+    <button onclick="cancelReservation2()">예약취소2</button>
+    <hr>
+    <div class="d1"></div>
+
+    <script>
+        
+        //스레드    : 작업 실행 단위(실행 흐름 단위)
+        //동기      : 미리 정해놓은 약속대로 처리하는 작업(절차흐름대로 처리-단일스레드 단위)
+        //비동기    : 정해지 약속대로 처리하는게 아니라 필요한 상황에 따라 다르게 처리(실행흐름분리-스레드를 따로 형성)
+
+        //비동기 처리함수 
+        //setTimeout(()=>{},millisecond) : 일정시간이후 특정작업을 1회 수행 - 비동기처리
+        //clearTimeout(id)               : 예약된 작업을 취소
+        let val1=null;
+        let val2=null;
+        function startReservation(){
+            console.log('sr-process1');         //main-1
+            val1=setTimeout(()=>{
+                console.log('sr-process2-1');     //woker01-1
+                console.log('sr-process2-2');     //woker01-2
+            },5000)
+            startReservation2();                //main-2
+            console.log('sr-process3');         //main-5  
+        };
+        function startReservation2(){
+            console.log("sr2-process1");        //main-3
+            val2=setTimeout(()=>{
+                console.log("sr2-process2-1");    //worker02-1
+                console.log("sr2-process2-2");    //worker02-2
+            },3000);
+            console.log("sr2-process3");        //main-4
+        }
+
+        function cancelReservation1(){
+            console.log("val1 ",val1);
+            clearTimeout(val1);
+           
+        }
+        function cancelReservation2(){
+            console.log("val2 ",val2); 
+            clearTimeout(val2);
+        }
+
+ 
+    </script>
+</body>
+</html>

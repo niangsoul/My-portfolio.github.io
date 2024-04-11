@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boxs{
+            display:flex;
+            justify-content: center;
+        }
+        .box1{width:300px;height:80vh;overflow:auto;border : 1px solid;margin:10px;}
+        .box2{width:300px;height:80vh;overflow:auto;border:1px solid;margin:10px;}
+        .box3{width:300px;height:80vh;overflow:auto;border:1px solid;margin:10px;}
+    </style>
+</head>
+<body>
+    
+    <div class="boxs">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+    
+    
+    <script>
+        const box1El = document.querySelector('.box1');
+        const box2El = document.querySelector('.box2');
+        const box3El = document.querySelector('.box3');
+
+        //MAIN PROCESS INTERVAL
+        setInterval(()=>{
+            box1El.innerHTML+="MAIN PROCESS...EXECUTED...<br>"
+        },1000);
+
+        //SUB PROCESS FUNCTION
+        function subProcessExec(val){
+            return new Promise((resolve,reject)=>{
+                try{
+                    setTimeout(()=>{  
+                        //비동기 프로세스01
+                        //비동기 프로세스02
+                        //비동기 프로세스03
+                        //...
+                        resolve(val); //성공했을때 결과 전달용 Func
+                        
+                    },3000);
+                    //throw "Exception....";
+                }catch(e){  
+                    reject(e);  //예외발생했을때 전달용 Func
+                }
+            })
+        }
+
+        // subProcessExec(1)
+        // .then((result)=>{
+        //     console.log('작업성공..',result);
+        //     box2El.innerHTML+="예약프로세스 "+result+" 실행완료-!";
+        // })
+        // .catch((error)=>{
+        //     console.log('작업실패..',error);
+        // })
+
+        // subProcessExec(2)
+        // .then((result)=>{
+        //     console.log('작업성공..',result);
+        //     box3El.innerHTML+="예약프로세스 "+result+" 실행완료-!";
+        // })
+        // .catch((error)=>{
+        //     console.log('작업실패..',error);
+        // })
+
+
+        //await / async
+        async function process01(){
+
+
+            await subProcessExec(1)
+            .then((result)=>{
+                console.log('작업성공..',result);
+                box2El.innerHTML+="await 예약프로세스 "+result+" 실행완료-!<br>";
+            })
+            .catch((error)=>{
+                console.log('작업실패..',error);
+            })
+
+            await subProcessExec(2)
+            .then((result)=>{
+                console.log('작업성공..',result);
+                box3El.innerHTML+="await 예약프로세스 "+result+" 실행완료-!<br>";
+            })
+            .catch((error)=>{
+                console.log('작업실패..',error);
+            })
+
+        }
+        process01();
+    </script>
+
+</body>
+</html>
