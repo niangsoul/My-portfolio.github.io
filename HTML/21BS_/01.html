@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 부트스트랩 css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- 부트스트랩 js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .col {
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  -->
+    <div class="container-lg">
+      <div class="row">
+        <div class="col col-6">COL1</div>
+        <div class="col">COL2</div>
+        <div class="col">COL3</div>
+      </div>
+    </div>
+    <hr />
+    <!-- 테이블  -->
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- 칼럼 -->
+            <th class="text-center">COL1</th>
+            <th class="text-center">COL2</th>
+            <th class="text-center">COL3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- 칼럼 -->
+            <td class="text-center">1</td>
+            <td class="text-center">2</td>
+            <td class="text-center">3</td>
+          </tr>
+          <tr>
+            <!-- 칼럼 -->
+            <td class="text-center">1</td>
+            <td class="text-center">2</td>
+            <td class="text-center">3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 폼 -->
+    <div class="container">
+      <form action="">
+        <select class="form-select w-50 m-2" name="" id="">
+          <option value="">Open this select menu</option>
+          <option value="">One</option>
+          <option value="">Two</option>
+        </select>
+        <div>
+          <!-- 체크박스 -->
+          <input type="checkbox" />
+          <label for="">체크박스</label>
+        </div>
+        <!-- 텍스트 상자 -->
+        <input type="text" class="form-control m-2 w-50" />
+        <input type="text" class="form-control m-2 w-50" />
+        <input type="text" class="form-control m-2 w-50" />
+        <input type="text" class="form-control m-2 w-50" />
+        <!-- 버튼 -->
+        <input type="button" value="버튼" class="btn btn-primary w-50 m-2" />
+        <button class="btn btn-primary">버튼</button>
+        <a href="" class="btn btn-warning">버튼</a>
+      </form>
+    </div>
+  </body>
+</html>
