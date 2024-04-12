@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- threejs -->
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.0/build/three.min.js"></script>
+    <script>
+      //Scene 생성
+      const scene = new THREE.Scene();
+      console.log(scene);
+
+      //Camera 생성(시야각 , 종횡비 ,근접클리핑 평면,원격클리핑 평면)
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      //Renderer 생성
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor("#2A0A0A"); //배경색
+      document.body.appendChild(renderer.domElement);
+
+      //Cube 생성
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshBasicMaterial({ color: "pink" });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+      //Cube 모양
+      const edges = new THREE.EdgesGeometry(geometry);
+      const lineMaterial = new THREE.LineBasicMaterial({ color: "white" });
+      const wireframe = new THREE.LineSegments(edges, lineMaterial);
+      cube.add(wireframe);
+
+      //카메라 z축 거리
+      camera.position.z = 5;
+
+      //랜더링처리
+      function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.05;
+        cube.rotation.y += 0.05;
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    </script>
+  </body>
+</html>
