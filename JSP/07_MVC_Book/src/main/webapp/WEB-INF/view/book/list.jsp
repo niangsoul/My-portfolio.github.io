@@ -47,9 +47,9 @@
 				</nav>
             </section>
             
-            <section class="search-block">
+            <section class="search-block layout-150">
        
-            	<form action="">          		
+            	<form action="${pageContext.request.contextPath }/book/list">          		
             		<div class="m-2">
 	            		<select name="keyfield" id="" class="form-select">
 	            			<option value="bookCode" selected>bookCode</option>
@@ -61,6 +61,9 @@
             		<div class="m-2">
             			<input name="keyword" placeholder="KEYWORD" class="form-control">
             		</div>	
+            		<div>
+            			<input type="hidden" name="pageNo" value="${pageDto.criteria.pageno }">
+            		</div>
             		<div class="m-2">
             			<button class="btn btn-secondary">조회</button>
             		</div>
@@ -70,8 +73,12 @@
             <section>
             	<%-- ${pageDto} --%>
          	<div>
-         	
-            		<div>TOTAL : <span> 1000</span> </div>
+         		<!-- (p)  페이지 번호 표시-->
+     				<div>전체게시물 개수 : <span> ${count }</span> </div>
+            		<div>전체페이지 개수 : <span> ${pageDto.totalpage }</span> </div>
+            		<div>전체페이지 블럭 개수 : <span> ${pageDto.totalBlock }</span> </div>
+            		<div>전체페이지 블럭 번호 : <span> ${pageDto.nowBlock }</span> </div>
+            		<div>현재페이지 개수 : <span> ${pageDto.criteria.pageno }</span> </div>
             		  
             		<div>NOW : <span> 1</span> </div>
             	</div> 
@@ -83,59 +90,59 @@
             			<td>BOOKCODE</td>
             			<td>BOOKNAME</td>
             			<td>PUBLISHER</td>
-            			<td>ISBN</td>
+            			<td>ISBN</td>	
             		</tr>
-	            	<tr>	
-							<td>1111</td>
-							<td>-제목</td>
-							<td>--출판사</td>
-							<td>111-1111</td>
-					</tr>
-	            	<tr>	
-							<td>1111</td>
-							<td>-제목</td>
-							<td>--출판사</td>
-							<td>111-1111</td>
-					</tr>	
-	            	<tr>	
-							<td>1111</td>
-							<td>-제목</td>
-							<td>--출판사</td>
-							<td>111-1111</td>
-					</tr>																	
-																
+            		
+            		<c:forEach  var="bookDto"	items="${list}" varStatus="status">    		
+		            	<tr>	
+								<td>${bookDto.bookCode}</td>
+								<td>${bookDto.bookName}</td>
+								<td>${bookDto.publisher}</td>
+								<td>${bookDto.isbn}</td>
+						</tr>          		
+            		</c:forEach>
+
+									
             	</table>      
             </section>
+            
+            
             
             <!-- paging -->
             <section>
 	            	<nav aria-label="Page navigation example">
 					  <ul class="pagination">
 					    <!-- prev -->
-					    
-					    
-						<li class="page-item">
-							   <a class="page-link" href="" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							   </a>
-						</li>        
+					    <!-- (p) 이전페이지 표시 -->
+					   <c:if test="${pageDto.prev}">
+	 						<li class="page-item">
+								   <a class="page-link" href="${pageContext.request.contextPath}/book/list?pageNo=${pageDto.nowBlock*pageDto.pagePerBlock-pageDto.pagePerBlock*2+1}&type=${pageDto.criteria.type}&keyword=${pageDto.criteria.keyword}" aria-label="Previous">
+								        <span aria-hidden="true">&laquo;</span>
+								   </a>
+							</li>  							
+ 						</c:if>
+		    
 					    
 					    
 					    <!-- paging -->
+									<c:forEach 	var="pageNo"	begin="${pageDto.startPage}" end="${pageDto.endPage}" 	step="1">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath}/book/list?pageNo=${pageNo}&type=${pageDto.criteria.type}&keyword=${pageDto.criteria.keyword}">${pageNo}</a>
+							</li>
+						</c:forEach>
 						
-						<li class="page-item"><a class="page-link" href="">1</a></li>
-						<li class="page-item"><a class="page-link" href="">2</a></li>
-						<li class="page-item"><a class="page-link" href="">3</a></li>
-						<li class="page-item"><a class="page-link" href="">4</a></li>
+
 						
-					    
+					    <!-- (p) 다음페이지 표시 -->
 					    <!-- next -->
-					  
-						<li class="page-item">
-							      <a class="page-link" href="" aria-label="Next">
-							        	<span aria-hidden="true">&raquo;</span>
-							      </a>
-						</li>
+					 <c:if test="${pageDto.next}">
+							<li class="page-item">
+								      <a class="page-link" href="${pageContext.request.contextPath}/book/list?pageNo=${pageDto.nowBlock*pageDto.pagePerBlock+1}&type=${pageDto.criteria.type}&keyword=${pageDto.criteria.keyword}" aria-label="Next">
+								        	<span aria-hidden="true">&raquo;</span>
+								      </a>
+							</li>
+						</c:if>
+		
  
 					  </ul>
 					</nav>
