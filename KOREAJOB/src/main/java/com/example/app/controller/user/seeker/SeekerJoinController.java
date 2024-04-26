@@ -50,11 +50,11 @@ public class SeekerJoinController implements SubController {
 			
 			//03 -!!!!!!!!!!!!!!
 		    SeekerDto scckerDto = new SeekerDto();
-		    scckerDto.getId();
-		    scckerDto.getUsername();
-		    scckerDto.getPassword();
-		    scckerDto.getTel();
-		    scckerDto.getAddress();
+		    scckerDto.setId(id);
+		    scckerDto.setUsername(username);
+		    scckerDto.setPassword(password);
+		    scckerDto.setTel(tel);
+		    scckerDto.setAddress(addr);
 		    Map<String, Object> isAdded = seekerServiceImpl.join(scckerDto);
 			//04
 		    if(isAdded != null) {

@@ -45,7 +45,8 @@ public class SeekerRemoveController implements SubController {
 			 }
 		    //03
 		    SeekerDto scckerDto = new SeekerDto();
-		    scckerDto.getId();
+		    scckerDto.setId(id);
+		    scckerDto.setPassword(password);
 		    Map<String, Object> isAdded = seekerServiceImpl.remove(scckerDto);
 			//04
 		    if(isAdded != null) {
