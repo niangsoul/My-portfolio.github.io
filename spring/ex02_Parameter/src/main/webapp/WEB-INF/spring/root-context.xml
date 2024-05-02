@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="personDtoByXml" class="com.example.app.domain.dto.PersonDto">
+		<constructor-arg name="name" value="홍길동" />
+		<constructor-arg name="age" value="12" />
+		<constructor-arg name="addr" value="대구" />		
+	</bean>	
+	<bean id="personDtoByXml2" class="com.example.app.domain.dto.PersonDto">
+		<constructor-arg name="name" value="남길동" />
+		<constructor-arg name="age" value="55" />
+		<constructor-arg name="addr" value="인천" />	
+	</bean>	
+	
+	<context:component-scan base-package="com.example.app.config" />
+	<context:component-scan base-package="com.example.app.domain.dto" />
+	
+</beans>

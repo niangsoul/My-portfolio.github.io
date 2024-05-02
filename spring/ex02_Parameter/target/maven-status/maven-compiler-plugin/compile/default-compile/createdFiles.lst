@@ -1,0 +1,4 @@
+com\example\app\domain\dto\PersonDto$PersonDtoBuilder.class
+com\example\app\controller\HomeController.class
+com\example\app\config\PersonDtoBeanConfig.class
+com\example\app\domain\dto\PersonDto.class
